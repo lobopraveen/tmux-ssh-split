@@ -1,3 +1,17 @@
+# Differences between the upstream and this forked repo
+
+As of 23rd March 2025, this repo has additional changes that make it a little more portable than
+the upstream. You can find the original commits made in this repo at 
+https://github.com/pschmitt/tmux-ssh-split/pull/19/commits Upstream author pulled the core 
+changes but not all.
+
+To find the current differences between the two repos, please visit 
+https://github.com/pschmitt/tmux-ssh-split/compare/main...lobopraveen:tmux-ssh-split:main
+
+
+To install this version use: `set -g @plugin 'lobopraveen/tmux-ssh-split'`
+
+
 # 🎛️ TMUX SSH Split
 
 [![](./tmux-ssh-split.gif)](https://asciinema.org/a/335250)
