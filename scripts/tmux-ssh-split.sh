@@ -399,18 +399,17 @@ extract_path_from_ps1() {
       return 0
     fi
 
-    # Replace ~ with $HOME to avoid no such file or directory error. See issue #16
-    match="${match/\~/\$HOME}"
-
-    echo -n "$match"
+    # Replace ~ with $HOME to avoid "No such file or directory" errors.
+    # https://github.com/pschmitt/tmux-ssh-split/issues/16
+    echo -n "${match/\~/\$HOME}"
     return 0
   fi
 
   # Search for paths
   if match=$(grep -m 1 -oP '/[^ ]*' <<< "$line")
   then
-    # Remove trailing '$', '#' and ']' See issue #17
-    # Remove quotes (eg: ' or ")
+    # 1. Remove trailing '$', '#' and ']' See https://github.com/pschmitt/tmux-ssh-split/issues/17
+    # 2. Remove quotes (eg: ' or ")
     sed -r -e 's/[]$#]+$//' -e "s/['\"]//g"  <<< "${match}"
     return
   fi
